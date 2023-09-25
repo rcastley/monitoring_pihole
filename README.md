@@ -58,7 +58,7 @@ To scrape the metrics collected by the Pi-hole Exporter, we'll use OpenTelemetry
          scrape_interval: 10s
          static_configs:
          - targets: ['localhost:9617']
-  ```
+   ```
 
 3. In the metrics pipeline add the newly created reciever:
 
