@@ -43,13 +43,13 @@ To scrape the metrics collected by the Pi-hole Exporter, we'll use OpenTelemetry
 
 1. Install OpenTelemetry
 
-   ```bash
+   ``` bash
    sudo dpkg -i otelcol_0.85.0_linux_armv7.deb
    ```
 
 2. Edit the OpenTelemetry configuration to scrape the Pi-hole Exporter Prometheus endpoint. For this we need to create a new receiver:
 
-   ```yaml
+   ``` yaml
   # Collect Pi-Hole Exporter metrics
   prometheus/pi-hole:
     config:
@@ -62,7 +62,7 @@ To scrape the metrics collected by the Pi-hole Exporter, we'll use OpenTelemetry
 
 3. In the metrics pipeline add the newly created reciever:
 
-   ```yaml
+   ``` yaml
     metrics:
       receivers: [otlp, opencensus, prometheus, prometheus/pi-hole]
    ```
@@ -71,7 +71,7 @@ To scrape the metrics collected by the Pi-hole Exporter, we'll use OpenTelemetry
 
 5. Next, we need to configure where we are going to send our new metrics, Splunk Observability Cloud is a fantastic choice. So, we need to define the metrics ingest endpoint, realm and access token using an OTLPHTTP exporter. Also, when creating the new exporter it is a good idea to change the `logging` exporter value from `detailed` to `normal` otherwise the logs are very, very noisy.
 
-   ```yaml
+   ``` yaml
    exporters:
      logging:
        verbosity: normal
@@ -84,7 +84,8 @@ To scrape the metrics collected by the Pi-hole Exporter, we'll use OpenTelemetry
   Of course, the exporter could be any Observability endpoint, so if you wish to use something else, then please configure accordingly.
 
 6. Finally, add the newly created exporter to the metrics pipeline, your final metrics pipeline configuration should now look like this:
-   ```
+
+   ``` yaml
     metrics:
       receivers: [otlp, opencensus, prometheus, prometheus/pi-hole]
       processors: [batch]
