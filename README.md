@@ -90,7 +90,7 @@ To scrape the metrics collected by the Pi-hole Exporter, we'll use OpenTelemetry
       receivers: [otlp, opencensus, prometheus, prometheus/pi-hole]
       processors: [batch]
       exporters: [logging, otlphttp/splunk]
-  ```
+   ```
 
 ## Step 3: Visualize Metrics with Splunk Observability Cloud (Optional)
 
