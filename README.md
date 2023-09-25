@@ -27,7 +27,7 @@ The Pi-hole Exporter is a Prometheus exporter specifically designed to collect a
     ekofr/pihole-exporter:latest
    ```
 
-2. For the CLI download the latest version (`v0.4.0`` at the time of writing) [https://github.com/eko/pihole-exporter/releases/download/v0.4.0/pihole_exporter-linux-arm](https://github.com/eko/pihole-exporter/releases/download/v0.4.0/pihole_exporter-linux-arm)
+2. For the CLI download the latest version (`v0.4.0` at the time of writing) [https://github.com/eko/pihole-exporter/releases/download/v0.4.0/pihole_exporter-linux-arm](https://github.com/eko/pihole-exporter/releases/download/v0.4.0/pihole_exporter-linux-arm)
 
    ``` bash
    ./pihole_exporter -pihole_hostname pi-hole_ip_address -pihole_password mypassword &
