@@ -14,9 +14,9 @@ Before we dive into monitoring Pi-hole with the Pi-hole Exporter, make sure you 
 
 ## Step 1: Install Pi-hole Exporter
 
-The Pi-hole Exporter is a Prometheus exporter specifically designed to collect and expose metrics from your Pi-hole instance. You can run it as a Docker container. Here's how to do it:
+The Pi-hole Exporter is a Prometheus exporter specifically designed to collect and expose metrics from your Pi-hole instance. You can run it as a Docker container or directly from the CLI. Here's how to do it:
 
-1. Pull the Pi-hole Exporter Docker image:
+1. For Docker run the following command:
 
    ``` bash
    docker run \
@@ -27,13 +27,13 @@ The Pi-hole Exporter is a Prometheus exporter specifically designed to collect a
     ekofr/pihole-exporter:latest
    ```
 
-2. Run directly from the command line download the latest version (0.4.0 at the time of writing) [https://github.com/eko/pihole-exporter/releases/download/v0.4.0/pihole_exporter-linux-arm](https://github.com/eko/pihole-exporter/releases/download/v0.4.0/pihole_exporter-linux-arm)
+2. For the CLI download the latest version (`v0.4.0`` at the time of writing) [https://github.com/eko/pihole-exporter/releases/download/v0.4.0/pihole_exporter-linux-arm](https://github.com/eko/pihole-exporter/releases/download/v0.4.0/pihole_exporter-linux-arm)
 
    ``` bash
-   ./pihole_exporter -pihole_hostname pihole_ip_address -pihole_password mypassword &
+   ./pihole_exporter -pihole_hostname pi-hole_ip_address -pihole_password mypassword &
    ```
 
-   Replace `pihole_ip_address` and `mypassword` with the actual IP address or hostname and administration password of your Pi-hole installation.
+   Replace `pi-hole_ip_address` and `mypassword` with the actual IP address or hostname and administration password of your Pi-hole installation.
 
 The Pi-hole Exporter is now running, collecting metrics from your Pi-hole instance, and exposing them on port 9617.
 
