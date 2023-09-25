@@ -79,9 +79,9 @@ To scrape the metrics collected by the Pi-hole Exporter, we'll use OpenTelemetry
        metrics_endpoint: https://ingest.${env:REALM}.signalfx.com/v2/datapoint/otlp
        headers:
          X-SF-TOKEN: ${env:ACCESS_TOKEN}   
-  ```
+   ```
 
-  Of course, the exporter could be any Observability endpoint, so if you wish to use something else, then please configure accordingly.
+   Of course, the exporter could be any Observability endpoint, so if you wish to use something else, then please configure accordingly.
 
 6. Finally, add the newly created exporter to the metrics pipeline, your final metrics pipeline configuration should now look like this:
 
