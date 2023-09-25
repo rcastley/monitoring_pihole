@@ -69,19 +69,21 @@ To scrape the metrics collected by the Pi-hole Exporter, we'll use OpenTelemetry
 
 4. Restart OpenTelemetry to apply the changes and check the logs to ensure there are no errors.
 
-5. Next, we need to configure where we are going to send our new metrics, Splunk Observability Cloud is a fantastic choice. So, we need to define the metrics ingest endpoint, realm and access token using an OTLPHTTP exporter. Also, when creating the new exporter it is a good idea to change the `logging` exporter value from `detailed` to `normal` otherwise the logs are very, very noisy.
+5. Next, we need to configure where we are going to send our new metrics, Splunk Observability Cloud is a fantastic choice. If you don't have a Splunk Observability Cloud account, you can sign up for a free trial [here](https://www.splunk.com/en_us/software/observability.html). So, we need to define the metrics ingest endpoint, realm and access token using an OTLPHTTP exporter. Also, when creating the new exporter it is a good idea to change the `logging` exporter value from `detailed` to `normal` otherwise the logs are very, very noisy.
 
    ``` yaml
    exporters:
      logging:
        verbosity: normal
      otlphttp/splunk:
-       metrics_endpoint: https://ingest.${env:REALM}.signalfx.com/v2/datapoint/otlp
+       metrics_endpoint: https://ingest.${REALM}.signalfx.com/v2/datapoint/otlp
        headers:
-         X-SF-TOKEN: ${env:ACCESS_TOKEN}   
+         X-SF-TOKEN: ${ACCESS_TOKEN}
    ```
 
-   Of course, the exporter could be any Observability endpoint, so if you wish to use something else, then please configure accordingly.
+   **Note:** The varilables `${REALM}` and `${ACCESS_TOKEN}` can be configured and set in `/etc/otelcol/otelcol.conf`.
+
+   Of course, the exporter could be any Observability endpoint, so if you wish to use something else, then please configure for that environment accordingly.
 
 6. Finally, add the newly created exporter to the metrics pipeline, your final metrics pipeline configuration should now look like this:
 
@@ -94,8 +96,18 @@ To scrape the metrics collected by the Pi-hole Exporter, we'll use OpenTelemetry
 
 ## Step 3: Visualize Metrics with Splunk Observability Cloud (Optional)
 
+Now that we've set up the Pi-hole Exporter and OpenTelemetry, we can visualize the metrics in Splunk Observability Cloud.
+
+You can use the following dashboard to visualize the metrics collected by the Pi-hole Exporter and OpenTelemetry which is available to import into Splunk Observability Cloud which can be found [here](https://raw.githubusercontent.com/rcastley/monitoring_pihole/main/dashboard_Pi-Hole.json).
+
+For more information on how to import a new dashboard into an existing dashboard group, see [here](https://docs.splunk.com/Observability/en/data-visualization/dashboards/dashboards-import-export.html).
+
 ![Screenshot](screenshot2.png)
 
 ## Conclusion
 
-Monitoring Pi-hole with the Pi-hole Exporter and OpenTelemetry offers valuable insights into the performance and status of your ad-blocking service. By following this comprehensive guide, you can set up the OpenTelemetry to collect metrics from your Pi-hole installation easily. Sending the metrics to Splunk Observability Cloud enables you to visualize and analyze these metrics effectively, ensuring your Pi-hole operates optimally and enhances your online experience by blocking unwanted ads and trackers. Whether you're a home user or a network administrator, monitoring Pi-hole with these tools is a powerful way to maintain a clean and efficient network.
+Monitoring Pi-hole with the Pi-hole Exporter and OpenTelemetry offers valuable insights into the performance and status of your ad-blocking service.
+
+By following this comprehensive guide, you can set up the OpenTelemetry to collect metrics from your Pi-hole installation easily. Sending the metrics to Splunk Observability Cloud enables you to visualize and analyze these metrics effectively, ensuring your Pi-hole operates optimally and enhances your online experience by blocking unwanted ads and trackers.
+
+Whether you're a home user or a network administrator, monitoring Pi-hole with these tools is a powerful way to maintain a clean and efficient network.
