@@ -94,7 +94,7 @@ To scrape the metrics collected by the Pi-hole Exporter, we'll use OpenTelemetry
 
 ## Step 3: Visualize Metrics with Splunk Observability Cloud (Optional)
 
-![screenshot.png]
+![Screenshot](screenshot.png)
 
 ## Conclusion
 
