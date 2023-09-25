@@ -50,21 +50,21 @@ To scrape the metrics collected by the Pi-hole Exporter, we'll use OpenTelemetry
 2. Edit the OpenTelemetry configuration to scrape the Pi-hole Exporter Prometheus endpoint. For this we need to create a new receiver:
 
    ``` yaml
-  # Collect Pi-Hole Exporter metrics
-  prometheus/pi-hole:
-    config:
-      scrape_configs:
-      - job_name: 'pi-hole-exporter'
-        scrape_interval: 10s
-        static_configs:
-        - targets: ['localhost:9617']
+   # Collect Pi-Hole Exporter metrics
+   prometheus/pi-hole:
+     config:
+       scrape_configs:
+       - job_name: 'pi-hole-exporter'
+         scrape_interval: 10s
+         static_configs:
+         - targets: ['localhost:9617']
   ```
 
 3. In the metrics pipeline add the newly created reciever:
 
    ``` yaml
-    metrics:
-      receivers: [otlp, opencensus, prometheus, prometheus/pi-hole]
+   metrics:
+     receivers: [otlp, opencensus, prometheus, prometheus/pi-hole]
    ```
 
 4. Restart OpenTelemetry to apply the changes and check the logs to ensure there are no errors.
