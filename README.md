@@ -1,6 +1,6 @@
-Title: Monitoring Pi-hole Using Pi-hole Exporter and OpenTelemetry: A Comprehensive Guide
+# Monitoring Pi-hole Using Pi-hole Exporter and OpenTelemetry: A Comprehensive Guide
 
-Introduction
+##Introduction
 
 Pi-hole is a fantastic open-source DNS-based ad blocker that enhances your online experience by blocking unwanted ads and trackers network-wide. Monitoring the performance and status of your Pi-hole setup is essential to ensure its effectiveness. In this blog post, we'll explore how to use the Pi-hole Exporter to collect and visualize metrics from your Pi-hole installation, enabling you to monitor and optimize its performance effortlessly.
 
