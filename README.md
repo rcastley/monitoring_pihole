@@ -18,7 +18,7 @@ The Pi-hole Exporter is a Prometheus exporter specifically designed to collect a
 
 1. Pull the Pi-hole Exporter Docker image:
 
-   ```bash
+   ``` bash
    docker run \
     -e 'PIHOLE_HOSTNAME=pihole_ip_address' \
     -e 'PIHOLE_PASSWORD=mypassword' \
@@ -29,7 +29,7 @@ The Pi-hole Exporter is a Prometheus exporter specifically designed to collect a
 
 2. Run directly from the command line download the latest version (0.4.0 at the time of writing) [https://github.com/eko/pihole-exporter/releases/download/v0.4.0/pihole_exporter-linux-arm](https://github.com/eko/pihole-exporter/releases/download/v0.4.0/pihole_exporter-linux-arm)
 
-   ```bash
+   ``` bash
    ./pihole_exporter -pihole_hostname pihole_ip_address -pihole_password mypassword &
    ```
 
