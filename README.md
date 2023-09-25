@@ -19,7 +19,7 @@ The Pi-hole Exporter is a Prometheus exporter specifically designed to collect a
 1. Pull the Pi-hole Exporter Docker image:
 
    ```bash
-  docker run \
+   docker run \
     -e 'PIHOLE_HOSTNAME=pihole_ip_address' \
     -e 'PIHOLE_PASSWORD=mypassword' \
     -e 'PORT=9617' \
