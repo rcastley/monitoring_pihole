@@ -2,7 +2,9 @@
 
 ## Introduction
 
-Pi-hole is a fantastic open-source DNS-based ad blocker that enhances your online experience by blocking unwanted ads and trackers network-wide. Monitoring the performance and status of your Pi-hole setup is essential to ensure its effectiveness. In this blog post, we'll explore how to use the Pi-hole Exporter to collect and visualize metrics from your Pi-hole installation, enabling you to monitor and optimize its performance effortlessly.
+At Splunk we love OpenTelemetry and I love OpenTelemetry because it is able to run on a Raspberry Pi. So, I thought it would be interesting to see if I could get the OpenTelemetry collector fetching metrics from Pi-hole.
+
+Pi-hole is a fantastic open-source DNS-based ad blocker that enhances your online experience by blocking unwanted ads and trackers network-wide. Monitoring the performance and status of your Pi-hole setup is essential to ensure its effectiveness. Next we'll explore how to use a Prometheus exporter to expose metrics from Pi-hole and have the OpenTelemetry collector scrape the metrics and send to Splunk Observability Cloud.
 
 ## Prerequisites
 
@@ -27,7 +29,7 @@ The Pi-hole Exporter is a Prometheus exporter specifically designed to collect a
     ekofr/pihole-exporter:latest
    ```
 
-2. For the CLI download the latest version (`v0.4.0` at the time of writing) [https://github.com/eko/pihole-exporter/releases/download/v0.4.0/pihole_exporter-linux-arm](https://github.com/eko/pihole-exporter/releases/download/v0.4.0/pihole_exporter-linux-arm)
+2. For the CLI, download the latest version (`v0.4.0` at the time of writing) [https://github.com/eko/pihole-exporter/releases/download/v0.4.0/pihole_exporter-linux-arm](https://github.com/eko/pihole-exporter/releases/download/v0.4.0/pihole_exporter-linux-arm)
 
    ``` bash
    ./pihole_exporter -pihole_hostname pi-hole_ip_address -pihole_password mypassword &
@@ -39,7 +41,7 @@ The Pi-hole Exporter is now running, collecting metrics from your Pi-hole instan
 
 ## Step 2: Install and Configure OpenTelemetry to Scrape Metrics
 
-To scrape the metrics collected by the Pi-hole Exporter, we'll use OpenTelemetry. My PiHole is currently running RaspianOS 32bit (Debian 10), so the `armv7` version of OpenTelemetry is required [https://github.com/open-telemetry/opentelemetry-collector-releases/releases/download/v0.85.0/otelcol_0.85.0_linux_armv7.deb](https://github.com/open-telemetry/opentelemetry-collector-releases/releases/download/v0.85.0/otelcol_0.85.0_linux_armv7.deb). Ensure you download and install the correct version for your operating system.
+To scrape the metrics collected by the Pi-hole Exporter, we'll the OpenTelemetry collector. My Pi-hole is currently running RaspianOS 32bit (Debian 10), so the `armv7` version of OpenTelemetry is required [https://github.com/open-telemetry/opentelemetry-collector-releases/releases/download/v0.85.0/otelcol_0.85.0_linux_armv7.deb](https://github.com/open-telemetry/opentelemetry-collector-releases/releases/download/v0.85.0/otelcol_0.85.0_linux_armv7.deb). Ensure you download and install the correct version for your operating system.
 
 1. Install OpenTelemetry
 
@@ -108,6 +110,6 @@ For more information on how to import a new dashboard into an existing dashboard
 
 Monitoring Pi-hole with the Pi-hole Exporter and OpenTelemetry offers valuable insights into the performance and status of your ad-blocking service.
 
-By following this comprehensive guide, you can set up the OpenTelemetry to collect metrics from your Pi-hole installation easily. Sending the metrics to Splunk Observability Cloud enables you to visualize and analyze these metrics effectively, ensuring your Pi-hole operates optimally and enhances your online experience by blocking unwanted ads and trackers.
+By following this comprehensive guide, you can set up the OpenTelemetry collector to collect metrics from your Pi-hole installation easily. Sending the metrics to Splunk Observability Cloud enables you to visualize and analyze these metrics effectively, ensuring your Pi-hole operates optimally and enhances your online experience by blocking unwanted ads and trackers.
 
-Whether you're a home user or a network administrator, monitoring Pi-hole with these tools is a powerful way to maintain a clean and efficient network.
+Whether you're a home user or a network administrator, monitoring Pi-hole with OpenTelemetry is an easy and powerful way to maintain a clean and efficient network.
