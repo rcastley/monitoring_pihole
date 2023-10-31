@@ -2,7 +2,7 @@
 
 ## Introduction
 
-At Splunk we love OpenTelemetry and I love OpenTelemetry because it is able to run on a Raspberry Pi. So, I thought it would be interesting to see if I could get the OpenTelemetry collector fetching metrics from Pi-hole.
+At Splunk we love OpenTelemetry and I love OpenTelemetry because it is able to run on a Raspberry Pi. So, I thought it would be interesting to see if I could get the OpenTelemetry Collector fetching metrics from Pi-hole. Plus, we get the added bonus of OpenTelemetry collecting the host metrics of the Raspberry Pi. In fact, checkout all of the receivers (a receiver, which can be push or pull based, is how data gets into the Collector) that are available [here](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/receiver).
 
 Pi-hole is a fantastic open-source DNS-based ad blocker that enhances your online experience by blocking unwanted ads and trackers network-wide. Monitoring the performance and status of your Pi-hole setup is essential to ensure its effectiveness. Next we'll explore how to use a Prometheus exporter to expose metrics from Pi-hole and have the OpenTelemetry collector scrape the metrics and send to Splunk Observability Cloud.
 
@@ -71,7 +71,7 @@ To scrape the metrics collected by the Pi-hole Exporter, we'll the OpenTelemetry
 
 4. Restart OpenTelemetry to apply the changes and check the logs to ensure there are no errors.
 
-5. Next, we need to configure where we are going to send our new metrics, Splunk Observability Cloud is a fantastic choice. If you don't have a Splunk Observability Cloud account, you can sign up for a free trial [here](https://www.splunk.com/en_us/software/observability.html). So, we need to define the metrics ingest endpoint, realm and access token using an OTLPHTTP exporter. Also, when creating the new exporter it is a good idea to change the `logging` exporter value from `detailed` to `normal` otherwise the logs are very, very noisy.
+5. Next, we need to configure where we are going to send our new metrics and Splunk Observability Cloud is a **fantastic** choice. If you don't have a Splunk Observability Cloud account, you can sign up for a free trial [here](https://www.splunk.com/en_us/software/observability.html). So, we need to define the metrics ingest endpoint, realm and access token using an OTLPHTTP exporter. Also, when creating the new exporter it is a good idea to change the `logging` exporter value from `detailed` to `normal` otherwise the logs are very, very noisy.
 
    ``` yaml
    exporters:
