@@ -2,9 +2,9 @@
 
 ## Introduction
 
-At Splunk we love OpenTelemetry and I love OpenTelemetry because it is able to run on a Raspberry Pi. So, I thought it would be interesting to see if I could get the OpenTelemetry Collector fetching metrics from Pi-hole. Plus, we get the added bonus of OpenTelemetry collecting the host metrics of the Raspberry Pi. In fact, checkout all of the receivers (a receiver, which can be push or pull based, is how data gets into the Collector) that are available [here](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/receiver).
+Pi-hole is a fantastic open-source DNS-based ad blocker that enhances your online experience by blocking unwanted ads and trackers network-wide. Monitoring the performance and status of your Pi-hole setup is essential to ensure its effectiveness. Next, we'll explore how to use a Prometheus exporter to expose metrics from Pi-hole and have the OpenTelemetry collector scrape the metrics and send them to Splunk Observability Cloud.
 
-Pi-hole is a fantastic open-source DNS-based ad blocker that enhances your online experience by blocking unwanted ads and trackers network-wide. Monitoring the performance and status of your Pi-hole setup is essential to ensure its effectiveness. Next we'll explore how to use a Prometheus exporter to expose metrics from Pi-hole and have the OpenTelemetry collector scrape the metrics and send to Splunk Observability Cloud.
+At Splunk we love OpenTelemetry and I love OpenTelemetry because it is able to run on a Raspberry Pi. So, I thought it would be interesting to see if I could get the OpenTelemetry Collector fetching metrics from Pi-hole. Plus, we get the added bonus of OpenTelemetry collecting the host metrics of the Raspberry Pi. In fact, check out all of the receivers (a receiver, which can be push or pull-based, is how data gets into the Collector) that are available [here](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/receiver).
 
 ## Prerequisites
 
@@ -85,7 +85,7 @@ To scrape the metrics collected by the Pi-hole Exporter, we'll the OpenTelemetry
 
    **Note:** The varilables `${REALM}` and `${ACCESS_TOKEN}` can be configured and set in `/etc/otelcol/otelcol.conf`.
 
-   Of course, the exporter could be any Observability endpoint, so if you wish to use something else, then please configure for that environment accordingly.
+   Of course, the exporter could be any Observability endpoint, so if you wish to use something else, then please configure it for that environment accordingly.
 
 6. Finally, add the newly created exporter to the metrics pipeline, your final metrics pipeline configuration should now look like this:
 
