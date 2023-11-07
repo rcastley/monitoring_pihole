@@ -1,4 +1,4 @@
-# Monitoring Pi-hole Using Pi-hole Exporter and OpenTelemetry: A Comprehensive Guide
+# Monitoring Pi-hole using Pi-hole Exporter and OpenTelemetry: A Comprehensive Guide
 
 ## Introduction
 
